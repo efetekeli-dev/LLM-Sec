@@ -36,7 +36,7 @@ class LLMSecurityProxy:
         # Layer 3: Forward Validated & Sanitized Request to Target LLM
         try:
             response = self.client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="qwen/qwen3.8-27b",
                 messages=[
                     {"role": "system", "content": "You are a secure, helpful assistant."},
                     {"role": "user", "content": evaluation["normalized_text"]}

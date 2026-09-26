@@ -24,12 +24,12 @@ def evaluate_with_llm_guard(sanitized_prompt: str) -> tuple[bool, str]:
     
     Example Unsafe Reason: "Attempted system prompt exfiltration or unauthorized instruction override detected."
 
-    Return strictly a valid JSON object.
+    You must respond strictly with a valid json object.
     """
 
     try:
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="qwen/qwen3.8-27b",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": sanitized_prompt}
@@ -47,4 +47,5 @@ def evaluate_with_llm_guard(sanitized_prompt: str) -> tuple[bool, str]:
         return result.get("is_safe", True), result.get("reason", "Security boundary violation detected.")
         
     except Exception as e:
+        print(f"\n[!!!] GROQ ERROR DETAIL: {e}\n")  
         return False, f"Guardrail execution failed: {str(e)}"
