@@ -27,7 +27,8 @@ Every incoming prompt undergoes a multi-layered verification process:
 
 Clone the repository:
 
-```git clone [https://github.com/efetekeli-dev/LLM-Sec.git](https://github.com/efetekeli-dev/LLM-Sec.git)
+```bash
+git clone [https://github.com/efetekeli-dev/LLM-Sec.git](https://github.com/efetekeli-dev/LLM-Sec.git)
 cd LLM-Sec```
 
 #Set up a virtual environment and install dependencies: 
@@ -68,3 +69,4 @@ While the Uvicorn server is running, execute the fuzzer in a separate terminal:
 [+] Payload: '<script>alert(1)</script>...'
     - Status Code: 403
     - Response: {"detail":{"status":"BLOCKED","message":"Access denied by LLM Guardrail: Input contains a Cross-Site Scripting (XSS)..."}}
+
