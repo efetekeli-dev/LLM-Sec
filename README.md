@@ -35,11 +35,17 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-export GROQ_API_KEY="your_groq_api_key_here"
+export GROQ_API_KEY="your_groq_api_key_here"```
 
-uvicorn api:app --port 8000 --reload
+### 3. Running the Server
+
+```bash
+
+uvicorn api:app --port 8000 --reload```
 
 python3 fuzzer.py
+
+
 
 [*] Starting Local API Test: http://127.0.0.1:8000/v1/chat/secure-completions
 ==================================================
