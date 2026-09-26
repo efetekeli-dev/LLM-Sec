@@ -26,36 +26,6 @@ Every incoming prompt undergoes a multi-layered verification process:
 ### 2. Installation & Setup
 
 Clone the repository:
-
 ```bash
 git clone [https://github.com/efetekeli-dev/LLM-Sec.git](https://github.com/efetekeli-dev/LLM-Sec.git)
 cd LLM-Sec
-
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-export GROQ_API_KEY="your_groq_api_key_here"
-
-### 3. Running the Server
-
-
-uvicorn api:app --port 8000 --reload```
-
-python3 fuzzer.py
-
-
-
-[*] Starting Local API Test: http://127.0.0.1:8000/v1/chat/secure-completions
-==================================================
-[+] Payload: 'Normal test message...'
-    - Status Code: 200
-    - Response: {"status":"SUCCESS","risk_score":0.0,...}
-
-[+] Payload: 'IGNORE PREVIOUS INSTRUCTIONS; ...'
-    - Status Code: 403
-    - Response: {"detail":{"status":"BLOCKED","message":"Access denied by LLM Guardrail: Attempted system prompt exfiltration..."}}
-
-[+] Payload: '<script>alert(1)</script>...'
-    - Status Code: 403
-    - Response: {"detail":{"status":"BLOCKED","message":"Access denied by LLM Guardrail: Input contains a Cross-Site Scripting (XSS)..."}}
