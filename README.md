@@ -27,7 +27,7 @@ Every incoming prompt undergoes a multi-layered verification process:
 
 Clone the repository:
 
-```bash
+```
 git clone [https://github.com/efetekeli-dev/LLM-Sec.git](https://github.com/efetekeli-dev/LLM-Sec.git)
 cd LLM-Sec
 
