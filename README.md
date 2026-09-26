@@ -34,13 +34,13 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-export GROQ_API_KEY="your_groq_api_key_here" ```
+export GROQ_API_KEY="your_groq_api_key_here"bash ```
 
 ### 3. Running the Server
 
 Start the FastAPI application using Uvicorn:
 
 ```bash
-uvicorn api:app --port 8000 --reload```
+uvicorn api:app --port 8000 --reload bash```
 
 
