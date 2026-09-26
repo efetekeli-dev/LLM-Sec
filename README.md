@@ -27,37 +27,21 @@ Every incoming prompt undergoes a multi-layered verification process:
 
 Clone the repository:
 
-```
+```bash
 git clone [https://github.com/efetekeli-dev/LLM-Sec.git](https://github.com/efetekeli-dev/LLM-Sec.git)
 cd LLM-Sec
-
-Set up a virtual environment and install dependencies:
 
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-
-Set your environment variables:
-
 export GROQ_API_KEY="your_groq_api_key_here"
-
-
-Start the FastAPI application using Uvicorn:
 
 uvicorn api:app --port 8000 --reload
 
-The API will be live at http://127.0.0.1:8000. You can test the endpoints via Interactive Swagger Docs at http://127.0.0.1:8000/docs.
-
-Running the Fuzzer
-
-While the Uvicorn server is running, execute the fuzzer in a separate terminal:
-
 python3 fuzzer.py
 
-Expected Fuzzer Output:
-
-[*] Starting Local API Test: [http://127.0.0.1:8000/v1/chat/secure-completions](http://127.0.0.1:8000/v1/chat/secure-completions)
+[*] Starting Local API Test: http://127.0.0.1:8000/v1/chat/secure-completions
 ==================================================
 [+] Payload: 'Normal test message...'
     - Status Code: 200
