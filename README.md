@@ -45,4 +45,32 @@ Start the FastAPI application using Uvicorn:
 uvicorn api:app --port 8000 --reload
 ```
 
+## Security Testing & Fuzzing
 
+The repository includes an automated testing script (fuzzer.py) to evaluate the guardrail against common LLM security threats (Prompt Injections, XSS payloads, and malformed inputs).
+
+### Running the Fuzzer
+
+While the Uvicorn server is running, execute the fuzzer in a separate terminal:
+
+```bash
+python3 fuzzer.py
+```
+
+### Expected Fuzzer Output 
+
+```bash
+[*] Starting Local API Test: [http://127.0.0.1:8000/v1/chat/secure-completions](http://127.0.0.1:8000/v1/chat/secure-completions)
+==================================================
+[+] Payload: 'Normal test message...'
+    - Status Code: 200
+    - Response: {"status":"SUCCESS","risk_score":0.0,...}
+
+[+] Payload: 'IGNORE PREVIOUS INSTRUCTIONS; ...'
+    - Status Code: 403
+    - Response: {"detail":{"status":"BLOCKED","message":"Access denied by LLM Guardrail: Attempted system prompt exfiltration..."}}
+
+[+] Payload: '<script>alert(1)</script>...'
+    - Status Code: 403
+    - Response: {"detail":{"status":"BLOCKED","message":"Access denied by LLM Guardrail: Input contains a Cross-Site Scripting (XSS)..."}}
+```
